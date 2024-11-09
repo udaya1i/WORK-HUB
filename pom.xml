@@ -44,9 +44,9 @@
     </dependencies>
     <modules>
         <module>workhub-core</module>
-        <module>user</module>
-        <module>department</module>
-        <module>projects</module>
+        <module>workhub-user</module>
+        <module>workhub-department</module>
+        <module>workhub-projects</module>
     </modules>
     <dependencyManagement>
         <dependencies>
