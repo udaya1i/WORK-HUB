@@ -2,19 +2,17 @@ package com.workhub.department.dto.request;
 
 import com.workhub.dto.request.Request;
 import com.workhub.validator.Required;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-public class DepartmentCreateRequest implements Request {
+@Data
+public class DepartmentEditRequest implements Request {
+
+
+    private Integer departmentId;
 
     @Required
     private String departmentName;
 
     @Required
     private String description;
-
-    @Required
-    private String code;
 }

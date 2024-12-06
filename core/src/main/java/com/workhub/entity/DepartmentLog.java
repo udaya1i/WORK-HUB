@@ -1,6 +1,5 @@
-package com.workhub.department.entity;
+package com.workhub.entity;
 
-import com.workhub.core.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

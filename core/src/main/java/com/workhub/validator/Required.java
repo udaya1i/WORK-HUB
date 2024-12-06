@@ -1,6 +1,6 @@
-package com.workhub.core.validator;
+package com.workhub.validator;
 
-import com.workhub.core.validator.constraint.RequiredValidatorForString;
+import com.workhub.validator.constraint.RequiredValidatorForString;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.ElementType;
@@ -18,6 +18,7 @@ public @interface Required {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
 }
 
 

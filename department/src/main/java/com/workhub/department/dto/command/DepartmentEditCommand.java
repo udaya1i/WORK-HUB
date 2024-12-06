@@ -1,13 +1,12 @@
 package com.workhub.department.dto.command;
 
 import com.workhub.dto.command.Command;
-import lombok.Getter;
-import lombok.Setter;
+import com.workhub.entity.Department;
+import lombok.Data;
 
-@Getter
-@Setter
-public class DepartmentCreateCommand implements Command {
+@Data
+public class DepartmentEditCommand implements Command {
+    private Department department;
     private String departmentName;
-    public String code;
     private String description;
 }

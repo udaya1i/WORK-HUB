@@ -4,10 +4,15 @@ import com.workhub.department.dto.mapper.DepartmentCreateCommandMapper;
 import com.workhub.department.service.DepartmentService;
 import com.workhub.department.dto.command.DepartmentCreateCommand;
 import com.workhub.department.dto.request.DepartmentCreateRequest;
-import com.workhub.core.dto.request.RequestValidator;
-import java.util.InputMismatchException;
+import com.workhub.dto.request.RequestValidator;
+import com.workhub.exception.InvalidRequestException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+/**
+ * Validator to validate user request and convert into commadn
+ *
+ * @author udaya
+ */
 
 @Service
 @AllArgsConstructor
@@ -18,9 +23,9 @@ public class DepartmentCreateValidator implements
 
     @Override
     public DepartmentCreateCommand validate(DepartmentCreateRequest request) {
-        departmentService.getDepartmentByCode(request.getCode()).ifPresent((department) -> {
-            throw new InputMismatchException("Department with the code "+ request.getCode() +" already exist.");
-        });
+        departmentService.getByCode(request.getCode()).ifPresent((department) -> {
+           throw new InvalidRequestException("Department with code "+ department.getCode()+" already exist.");
+         });
         return DepartmentCreateCommandMapper.toDepartmentCreateCommand(request);
     }
 }

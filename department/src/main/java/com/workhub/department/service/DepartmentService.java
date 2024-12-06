@@ -1,11 +1,16 @@
 package com.workhub.department.service;
 
 import com.workhub.department.dto.command.DepartmentCreateCommand;
-import com.workhub.department.entity.Department;
+import com.workhub.department.dto.command.DepartmentEditCommand;
+import com.workhub.entity.Department;
 import com.workhub.department.repository.DepartmentRepository;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+/**
+ * @author udaya
+ * */
 
 @Service
 @AllArgsConstructor
@@ -13,7 +18,7 @@ public class DepartmentService {
 
     private final DepartmentRepository departmentRepository;
 
-    public void createDepartment(DepartmentCreateCommand command){
+    public void create(DepartmentCreateCommand command){
         Department department = new Department();
         department.setDepartmentName(command.getDepartmentName());
         department.setDescription(command.getDescription());
@@ -21,8 +26,23 @@ public class DepartmentService {
         departmentRepository.save(department);
     }
 
-    public Optional<Department> getDepartmentByCode(String code){
-       return departmentRepository.findByCode(code);
+    public void delete(Department department){
+        departmentRepository.delete(department);
+    }
 
+    public Department edit(DepartmentEditCommand command){
+        Department department = command.getDepartment();
+        department.setDepartmentName(command.getDepartmentName());
+        department.setDescription(command.getDescription());
+        departmentRepository.save(department);
+        return department;
+    }
+
+    public Optional<Department> getByCode(String code){
+       return departmentRepository.findByCode(code);
+    }
+
+    public Optional<Department> getById(Integer id){
+        return departmentRepository.findById(id);
     }
 }

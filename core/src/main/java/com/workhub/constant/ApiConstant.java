@@ -1,4 +1,4 @@
-package com.workhub.core.constant;
+package com.workhub.constant;
 
 
 /*
@@ -19,8 +19,8 @@ package com.workhub.core.constant;
       */
 
      String CREATE = "create";
-     String UPDATE = "update";
+     String EDIT = "edit";
      String DELETE = "delete";
-     String ID = "id";
+     String ID = "{id}";
 
 }
