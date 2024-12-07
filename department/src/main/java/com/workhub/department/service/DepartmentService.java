@@ -4,6 +4,7 @@ import com.workhub.department.dto.command.DepartmentCreateCommand;
 import com.workhub.department.dto.command.DepartmentEditCommand;
 import com.workhub.entity.Department;
 import com.workhub.department.repository.DepartmentRepository;
+import com.workhub.specification.department.DepartmentSpecification;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,10 @@ public class DepartmentService {
 
     public Optional<Department> getByCode(String code){
        return departmentRepository.findByCode(code);
+    }
+
+    public Optional<Department> getByName(String code){
+        return departmentRepository.findOne(DepartmentSpecification.findByNameSpecification(code));
     }
 
     public Optional<Department> getById(Integer id){

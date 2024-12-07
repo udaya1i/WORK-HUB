@@ -37,6 +37,18 @@ public class DepartmentCreateGateway {
             .build();
     }
 
+    public GenericResponse getByName(String name){
+        Department department = departmentService.getByName(name)
+            .orElseThrow(()-> new InvalidRequestException("Department with given name is not present."));
+        return GenericResponse.builder()
+            .message("Department Fetched Successfully.")
+            .httpStatus(HttpStatus.OK)
+            .success(true)
+            .data(department)
+            .build();
+    }
+
+
     public GenericResponse create(DepartmentCreateRequest createRequest){
         DepartmentCreateCommand command = departmentCreateValidator.validate(createRequest);
         departmentService.create(command);

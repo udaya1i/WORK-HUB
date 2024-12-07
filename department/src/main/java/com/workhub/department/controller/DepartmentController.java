@@ -30,6 +30,11 @@ public class DepartmentController {
         return ResponseEntity.ok(departmentCreateGateway.getById(id));
     }
 
+    @GetMapping(ApiConstant.NAME)
+    public ResponseEntity<GenericResponse> getByName(@PathVariable String name){
+        return ResponseEntity.ok(departmentCreateGateway.getByName(name));
+    }
+
     @PostMapping(ApiConstant.CREATE)
     public ResponseEntity<GenericResponse> create(@Valid @RequestBody DepartmentCreateRequest department){
         GenericResponse response = departmentCreateGateway.create(department);

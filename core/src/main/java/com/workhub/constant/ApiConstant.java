@@ -22,5 +22,6 @@ package com.workhub.constant;
      String EDIT = "edit";
      String DELETE = "delete";
      String ID = "{id}";
+     String NAME = "{name}";
 
 }
