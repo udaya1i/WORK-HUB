@@ -2,16 +2,20 @@ package com.workhub.department.gateway;
 
 import com.workhub.department.dto.command.DepartmentCreateCommand;
 import com.workhub.department.dto.command.DepartmentEditCommand;
+import com.workhub.department.dto.mapper.DepartmentResponseMapper;
 import com.workhub.department.dto.request.DepartmentEditRequest;
 import com.workhub.department.dto.request.RequestValidator.DepartmentEditValidator;
 import com.workhub.department.service.DepartmentService;
+import com.workhub.dto.request.PaginationRequest;
 import com.workhub.dto.response.GenericResponse;
 import com.workhub.department.dto.request.DepartmentCreateRequest;
 import com.workhub.department.dto.request.RequestValidator.DepartmentCreateValidator;
 import com.workhub.entity.Department;
 import com.workhub.exception.InvalidRequestException;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,24 +34,21 @@ public class DepartmentCreateGateway {
         Department department = departmentService.getById(id)
             .orElseThrow(()-> new InvalidRequestException("Department Not Found"));
         return GenericResponse.builder()
-            .message("Department Fetched Successfully.")
             .httpStatus(HttpStatus.OK)
             .success(true)
-            .data(department)
+            .message("Department Fetched Successfully.")
+            .data(DepartmentResponseMapper.toDepartmentResponse(department))
             .build();
     }
-
-    public GenericResponse getByName(String name){
-        Department department = departmentService.getByName(name)
-            .orElseThrow(()-> new InvalidRequestException("Department with given name is not present."));
+    public GenericResponse getAll(){
+        List<Department> departments = departmentService.getAll();
         return GenericResponse.builder()
-            .message("Department Fetched Successfully.")
             .httpStatus(HttpStatus.OK)
             .success(true)
-            .data(department)
+            .message("Department Fetched Successully.")
+            .data(DepartmentResponseMapper.toDepartment(departments))
             .build();
     }
-
 
     public GenericResponse create(DepartmentCreateRequest createRequest){
         DepartmentCreateCommand command = departmentCreateValidator.validate(createRequest);

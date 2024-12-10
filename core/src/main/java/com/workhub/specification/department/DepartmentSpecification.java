@@ -9,8 +9,8 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class DepartmentSpecification {
 
-    public static Specification<Department> findByNameSpecification(String name) {
-        return ((root, query, criteriaBuilder) ->
-            criteriaBuilder.like(root.get("name"), "%" + name + "%"));
-    }
+//    public static Specification<Department> findByNameSpecification(String name) {
+//        return ((root, query, criteriaBuilder) ->
+//            criteriaBuilder.like(root.get("name"), "%" + name + "%"));
+//    }
 }

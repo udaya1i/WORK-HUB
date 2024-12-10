@@ -1,4 +1,7 @@
 spring:
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
   datasource:
     url: jdbc:mysql://localhost:3306/work_hub
     username: corporate

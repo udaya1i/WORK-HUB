@@ -2,9 +2,11 @@ package com.workhub.department.service;
 
 import com.workhub.department.dto.command.DepartmentCreateCommand;
 import com.workhub.department.dto.command.DepartmentEditCommand;
-import com.workhub.entity.Department;
 import com.workhub.department.repository.DepartmentRepository;
-import com.workhub.specification.department.DepartmentSpecification;
+import com.workhub.department.repository.StatusRepository;
+import com.workhub.entity.Department;
+import com.workhub.enums.StatusConstant;
+import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,36 +20,41 @@ import org.springframework.stereotype.Service;
 public class DepartmentService {
 
     private final DepartmentRepository departmentRepository;
+    private final StatusRepository statusRepository;
 
     public void create(DepartmentCreateCommand command){
         Department department = new Department();
         department.setDepartmentName(command.getDepartmentName());
         department.setDescription(command.getDescription());
         department.setCode(command.getCode());
+        department.setStatus(statusRepository.findByName(StatusConstant.CREATED.getStatus()));
         departmentRepository.save(department);
-    }
-
-    public void delete(Department department){
-        departmentRepository.delete(department);
     }
 
     public Department edit(DepartmentEditCommand command){
         Department department = command.getDepartment();
         department.setDepartmentName(command.getDepartmentName());
         department.setDescription(command.getDescription());
+        department.setStatus(statusRepository.findByName(StatusConstant.EDITED.getStatus()));
         departmentRepository.save(department);
         return department;
+    }
+
+    public void delete(Department department){
+        department.setStatus(statusRepository.findByName(StatusConstant.DELETED.getStatus()));
+        departmentRepository.save(department);
     }
 
     public Optional<Department> getByCode(String code){
        return departmentRepository.findByCode(code);
     }
 
-    public Optional<Department> getByName(String code){
-        return departmentRepository.findOne(DepartmentSpecification.findByNameSpecification(code));
-    }
-
     public Optional<Department> getById(Integer id){
         return departmentRepository.findById(id);
+    }
+
+    public List<Department> getAll(){
+        return departmentRepository.findAll();
+//        return departmentRepository.findAll(StatusSpecification.notDeletable(Department.class));
     }
 }

@@ -5,7 +5,7 @@ import com.workhub.department.service.DepartmentService;
 import com.workhub.department.dto.command.DepartmentCreateCommand;
 import com.workhub.department.dto.request.DepartmentCreateRequest;
 import com.workhub.dto.request.RequestValidator;
-import com.workhub.exception.InvalidRequestException;
+import com.workhub.exception.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 /**

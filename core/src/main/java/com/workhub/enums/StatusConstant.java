@@ -11,8 +11,7 @@ public enum StatusConstant {
     StatusConstant(String status) {
         this.status = status;
     }
-
-    public String getStatus(){
+    public String  getStatus(){
         return this.status;
     }
 }

@@ -6,7 +6,7 @@ import com.workhub.department.dto.mapper.DepartmentEditCommandMapper;
 import com.workhub.department.dto.request.DepartmentEditRequest;
 import com.workhub.department.service.DepartmentService;
 import com.workhub.entity.Department;
-import com.workhub.exception.InvalidRequestException;
+import com.workhub.exception.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

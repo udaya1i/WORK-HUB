@@ -1,10 +1,13 @@
 package com.workhub.department.controller;
 
 import com.workhub.constant.ApiConstant;
+import com.workhub.dto.request.PaginationRequest;
 import com.workhub.dto.response.GenericResponse;
 import com.workhub.department.dto.request.DepartmentCreateRequest;
 import com.workhub.department.dto.request.DepartmentEditRequest;
 import com.workhub.department.gateway.DepartmentCreateGateway;
+import com.workhub.entity.Department;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -25,16 +28,16 @@ public class DepartmentController {
 
     private final DepartmentCreateGateway departmentCreateGateway;
 
+    @GetMapping
+    public ResponseEntity<GenericResponse> getAll(){
+        GenericResponse response = departmentCreateGateway.getAll();
+        return ResponseEntity.status(response.getHttpStatus()).body(response);
+    }
+
     @GetMapping(ApiConstant.ID)
     public ResponseEntity<GenericResponse> getById(@PathVariable Integer id){
         return ResponseEntity.ok(departmentCreateGateway.getById(id));
     }
-
-    @GetMapping(ApiConstant.NAME)
-    public ResponseEntity<GenericResponse> getByName(@PathVariable String name){
-        return ResponseEntity.ok(departmentCreateGateway.getByName(name));
-    }
-
     @PostMapping(ApiConstant.CREATE)
     public ResponseEntity<GenericResponse> create(@Valid @RequestBody DepartmentCreateRequest department){
         GenericResponse response = departmentCreateGateway.create(department);

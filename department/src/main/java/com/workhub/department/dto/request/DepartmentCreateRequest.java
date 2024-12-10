@@ -1,7 +1,7 @@
 package com.workhub.department.dto.request;
 
 import com.workhub.dto.request.Request;
-import com.workhub.validator.Required;
+import com.workhub.validator.*;
 import lombok.Getter;
 import lombok.Setter;
 

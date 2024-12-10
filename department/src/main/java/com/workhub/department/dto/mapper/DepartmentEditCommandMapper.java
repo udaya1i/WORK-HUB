@@ -14,7 +14,7 @@ public class DepartmentEditCommandMapper {
         DepartmentEditCommand departmentEditCommand = new DepartmentEditCommand();
         departmentEditCommand.setDepartment(department);
         departmentEditCommand.setDepartmentName(request.getDepartmentName());
-        departmentEditCommand.setDepartmentName(request.getDepartmentName());
+        departmentEditCommand.setDescription(request.getDescription());
         return departmentEditCommand;
 
     }

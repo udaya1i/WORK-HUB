@@ -1,5 +1,6 @@
 package com.workhub.entity;
 
+import com.workhub.service.Statusable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name =  "DEPARTMENT")
-public class Department extends BaseEntity {
+public class Department extends BaseEntity implements Statusable {
 
     @Column(name = "DEPARTMENT_NAME", nullable = false)
     private String departmentName;
