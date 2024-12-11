@@ -23,5 +23,6 @@ package com.workhub.constant;
      String DELETE = "delete";
      String ID = "{id}";
      String NAME = "{name}";
+     String all ="all";
 
 }

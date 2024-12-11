@@ -6,9 +6,13 @@ import com.workhub.department.repository.DepartmentRepository;
 import com.workhub.department.repository.StatusRepository;
 import com.workhub.entity.Department;
 import com.workhub.enums.StatusConstant;
+import com.workhub.specification.status.StatusSpecification;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -54,7 +58,6 @@ public class DepartmentService {
     }
 
     public List<Department> getAll(){
-        return departmentRepository.findAll();
-//        return departmentRepository.findAll(StatusSpecification.notDeletable(Department.class));
+         return departmentRepository.findAll(StatusSpecification.notDeletable());
     }
 }

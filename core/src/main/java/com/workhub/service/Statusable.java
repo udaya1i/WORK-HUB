@@ -7,8 +7,19 @@ import com.workhub.entity.Status;
 */
 
 public interface Statusable {
+    /**
+     * Gets the status of the entity.
+     *
+     * @return the current status.
+     */
+    Status getStatus();
 
-Status getStatus();
-void setStatus(Status status);
+    /**
+     * Sets the status of the entity.
+     *
+     * @param status the new status to set.
+     */
+    void setStatus(Status status);
+
 
 }

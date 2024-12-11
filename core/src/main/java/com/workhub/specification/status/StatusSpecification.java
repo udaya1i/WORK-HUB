@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.Specification;
 @NoArgsConstructor
 public class StatusSpecification {
 
-        public static final <T extends Statusable> Specification<T> notDeletable(Class<T> clazz) {
+        public static final <T extends Statusable> Specification<T> notDeletable() {
             return (root, criteriaQuery, criteriaBuilder) ->{
                 Path<Status> statusPath = root.get("status");
                 return criteriaBuilder.notEqual(statusPath.get("name"), StatusConstant.DELETED.getStatus());
