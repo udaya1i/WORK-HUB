@@ -7,11 +7,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name =  "DEPARTMENT")
 public class Department extends BaseEntity implements Statusable {

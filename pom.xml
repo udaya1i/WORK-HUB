@@ -27,5 +27,6 @@
      <modules>
          <module>core</module>
          <module>department</module>
+         <module>teams</module>
      </modules>
 </project>
