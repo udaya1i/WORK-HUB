@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StatusRepository extends AbstractRepository<Status, Integer> {
-     Status findByName(String status);
+    Status findByName(String status);
 }

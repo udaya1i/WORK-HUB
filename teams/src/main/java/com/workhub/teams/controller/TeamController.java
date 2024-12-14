@@ -1,35 +1,52 @@
 package com.workhub.teams.controller;
 
+import com.workhub.constant.ApiConstant;
 import com.workhub.dto.response.GenericResponse;
+import com.workhub.teams.dto.request.TeamCreateRequest;
+import com.workhub.teams.dto.request.TeamEditRequest;
+import com.workhub.teams.gateway.TeamGateway;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+@Validated
 @RestController
-@RequestMapping
+@AllArgsConstructor
+@RequestMapping(path = ApiConstant.TEAM)
 public class TeamController {
 
+    private final TeamGateway gateway;
 
-    public ResponseEntity<GenericResponse> getALl(){
-        return new ResponseEntity<>();
+    @GetMapping
+    public ResponseEntity<GenericResponse> getALl() {
+        return ResponseEntity.status(HttpStatus.OK).body(gateway.getAll());
     }
 
-    public ResponseEntity<GenericResponse> getById(Long id){
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @GetMapping(path = ApiConstant.ID)
+    public ResponseEntity<GenericResponse> getById(Integer id) {
+        return ResponseEntity.status(HttpStatus.OK).body(gateway.getById(id));
     }
 
-    public ResponseEntity<GenericResponse> create(){
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    @PostMapping(path = ApiConstant.CREATE)
+    public ResponseEntity<GenericResponse> create(@RequestBody @Valid TeamCreateRequest teamCreateRequest) {
+        GenericResponse response = gateway.create(teamCreateRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    public ResponseEntity<GenericResponse> edit(Long id){
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @PostMapping(path = ApiConstant.EDIT)
+    public ResponseEntity<GenericResponse> edit(TeamEditRequest request) {
+        return ResponseEntity.status(HttpStatus.OK).body(gateway.edit(request));
     }
 
-    public ResponseEntity<GenericResponse> delete(Long id){
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @PostMapping(path = ApiConstant.DELETE + "/" + ApiConstant.ID)
+    public ResponseEntity<GenericResponse> delete(@PathVariable Integer id) {
+        return ResponseEntity.status(HttpStatus.OK).body(gateway.delete(id));
     }
 
 
 }
+
+

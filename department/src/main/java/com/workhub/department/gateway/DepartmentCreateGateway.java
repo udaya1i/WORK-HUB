@@ -11,7 +11,9 @@ import com.workhub.department.service.DepartmentService;
 import com.workhub.dto.response.GenericResponse;
 import com.workhub.entity.Department;
 import com.workhub.exception.InvalidRequestException;
+
 import java.util.List;
+
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -28,56 +30,57 @@ public class DepartmentCreateGateway {
     private final DepartmentCreateValidator departmentCreateValidator;
     private final DepartmentEditValidator departmentEditValidator;
 
-    public GenericResponse getById(Integer id){
+    public GenericResponse getById(Integer id) {
         Department department = departmentService.getById(id)
-            .orElseThrow(()-> new InvalidRequestException("Department Not Found"));
+                .orElseThrow(() -> new InvalidRequestException("Department Not Found"));
         return GenericResponse.builder()
-            .httpStatus(HttpStatus.OK)
-            .success(true)
-            .message("Department Fetched Successfully.")
-            .data(DepartmentResponseMapper.toDepartmentResponse(department))
-            .build();
+                .httpStatus(HttpStatus.OK)
+                .success(true)
+                .message("Department Fetched Successfully.")
+                .data(DepartmentResponseMapper.toDepartmentResponse(department))
+                .build();
     }
 
-    public GenericResponse getAll(){
+    public GenericResponse getAll() {
         List<Department> departments = departmentService.getAll();
         return GenericResponse.builder()
-            .httpStatus(HttpStatus.OK)
-            .success(true)
-            .message("Department Fetched Successully.")
-            .data(DepartmentResponseMapper.toDepartment(departments))
-            .build();
+                .httpStatus(HttpStatus.OK)
+                .success(true)
+                .message("Department Fetched Successully.")
+                .data(DepartmentResponseMapper.toDepartment(departments))
+                .build();
     }
 
-    public GenericResponse create(DepartmentCreateRequest createRequest){
+    public GenericResponse create(DepartmentCreateRequest createRequest) {
         DepartmentCreateCommand command = departmentCreateValidator.validate(createRequest);
         departmentService.create(command);
         return GenericResponse.builder()
-            .httpStatus(HttpStatus.CREATED)
-            .message("Department created successfully.")
-            .success(true)
-            .build();
+                .httpStatus(HttpStatus.CREATED)
+                .message("Department created successfully.")
+                .success(true)
+                .build();
     }
 
-    public GenericResponse delete(Integer id){
+    public GenericResponse delete(Integer id) {
         Department department = departmentService.getById(id)
-            .orElseThrow(()-> new InvalidRequestException("Department not found"));
+                .orElseThrow(() -> new InvalidRequestException("Department not found"));
         departmentService.delete(department);
         return GenericResponse.builder()
-            .httpStatus(HttpStatus.OK)
-            .message("Department Deleted successfully.")
-            .success(true)
-            .build();
+                .httpStatus(HttpStatus.OK)
+                .message("Department Deleted successfully.")
+                .success(true)
+                .build();
     }
-    public GenericResponse edit(DepartmentEditRequest updateRequest){
+
+    public GenericResponse edit(DepartmentEditRequest updateRequest) {
         DepartmentEditCommand command = departmentEditValidator.validate(updateRequest);
         Department department = departmentService.edit(command);
         return GenericResponse.builder()
-            .httpStatus(HttpStatus.OK)
-            .message("Department Edited Successfully.")
-            .success(true)
-            .data(department)
-            .build();
+                .httpStatus(HttpStatus.OK)
+                .message("Department Edited Successfully.")
+                .success(true)
+                .data(department)
+                .build();
     }
 
 }

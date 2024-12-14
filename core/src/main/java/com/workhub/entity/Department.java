@@ -8,17 +8,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 @Data
 @Entity
-@Table(name =  "DEPARTMENT")
+@Table(name = "DEPARTMENT")
 public class Department extends BaseEntity implements Statusable {
 
     @Column(name = "DEPARTMENT_NAME", nullable = false)
     private String departmentName;
 
-    @Column(name = "DESCRIPTION",nullable = false)
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
     @Column(name = "DEPARTMENT_CODE")

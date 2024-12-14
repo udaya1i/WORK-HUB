@@ -20,9 +20,10 @@ public class Teams extends BaseEntity implements Statusable {
     @Column(name = "team_leader")
     private String teamLeader;
 
-    @JoinColumn(name = "department", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Department department;
+    //TODO: Map with department entity
+//    @JoinColumn(name = "department", referencedColumnName = "id")
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Integer department;
 
     @JoinColumn(name = "status", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)

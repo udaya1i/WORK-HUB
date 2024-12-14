@@ -19,7 +19,7 @@ public class DepartmentEditValidator implements RequestValidator<DepartmentEditR
     @Override
     public DepartmentEditCommand validate(DepartmentEditRequest request) {
         Department department = departmentService.getById(request.getDepartmentId())
-            .orElseThrow(()-> new InvalidRequestException("Invalid Department"));
+                .orElseThrow(() -> new InvalidRequestException("Invalid Department"));
         return DepartmentEditCommandMapper.toDepartmentEditCommand(request, department);
 
     }

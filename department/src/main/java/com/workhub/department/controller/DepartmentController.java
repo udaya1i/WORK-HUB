@@ -7,7 +7,9 @@ import com.workhub.department.dto.request.DepartmentCreateRequest;
 import com.workhub.department.dto.request.DepartmentEditRequest;
 import com.workhub.department.gateway.DepartmentCreateGateway;
 import com.workhub.entity.Department;
+
 import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -29,28 +31,30 @@ public class DepartmentController {
     private final DepartmentCreateGateway departmentCreateGateway;
 
     @GetMapping
-    public ResponseEntity<GenericResponse> getAll(){
+    public ResponseEntity<GenericResponse> getAll() {
         GenericResponse response = departmentCreateGateway.getAll();
         return ResponseEntity.status(response.getHttpStatus()).body(response);
     }
 
     @GetMapping(ApiConstant.ID)
-    public ResponseEntity<GenericResponse> getById(@PathVariable Integer id){
+    public ResponseEntity<GenericResponse> getById(@PathVariable Integer id) {
         return ResponseEntity.ok(departmentCreateGateway.getById(id));
     }
+
     @PostMapping(ApiConstant.CREATE)
-    public ResponseEntity<GenericResponse> create(@Valid @RequestBody DepartmentCreateRequest department){
+    public ResponseEntity<GenericResponse> create(@Valid @RequestBody DepartmentCreateRequest department) {
         GenericResponse response = departmentCreateGateway.create(department);
         return ResponseEntity.status(response.getHttpStatus()).body(response);
     }
 
-    @PostMapping(ApiConstant.DELETE+"/"+ApiConstant.ID)
-    public ResponseEntity<GenericResponse> delete(@PathVariable Integer id){
+    @PostMapping(ApiConstant.DELETE + "/" + ApiConstant.ID)
+    public ResponseEntity<GenericResponse> delete(@PathVariable Integer id) {
         GenericResponse response = departmentCreateGateway.delete(id);
         return ResponseEntity.status(response.getHttpStatus()).body(response);
     }
+
     @PostMapping(ApiConstant.EDIT)
-    public ResponseEntity<GenericResponse> edit(@Valid @RequestBody DepartmentEditRequest departmentEditRequest){
+    public ResponseEntity<GenericResponse> edit(@Valid @RequestBody DepartmentEditRequest departmentEditRequest) {
         GenericResponse response = departmentCreateGateway.edit(departmentEditRequest);
         return ResponseEntity.status(response.getHttpStatus()).body(response);
     }

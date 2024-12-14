@@ -6,7 +6,9 @@ import com.workhub.validator.Required;
 import lombok.Data;
 
 @Data
-public class TeamCreateRequest implements Request {
+public class TeamEditRequest implements Request {
+
+    private Integer id;
 
     @Required
     private String name;
@@ -16,7 +18,6 @@ public class TeamCreateRequest implements Request {
 
     private String teamLeader;
 
-    private Integer departmentId;
-
-
+    @Required
+    private Integer department;
 }

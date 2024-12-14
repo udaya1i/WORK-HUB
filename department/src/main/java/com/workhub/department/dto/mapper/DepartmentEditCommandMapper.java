@@ -9,7 +9,7 @@ import lombok.experimental.UtilityClass;
 public class DepartmentEditCommandMapper {
 
     public static DepartmentEditCommand toDepartmentEditCommand(
-        DepartmentEditRequest request, Department department) {
+            DepartmentEditRequest request, Department department) {
 
         DepartmentEditCommand departmentEditCommand = new DepartmentEditCommand();
         departmentEditCommand.setDepartment(department);

@@ -1,10 +1,11 @@
 package com.workhub.service;
 
+
 import com.workhub.entity.Status;
 
 /**
-* @author udaya
-*/
+ * @author udaya
+ */
 
 public interface Statusable {
     /**

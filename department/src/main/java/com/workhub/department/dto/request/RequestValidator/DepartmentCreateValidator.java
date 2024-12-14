@@ -8,6 +8,7 @@ import com.workhub.dto.request.RequestValidator;
 import com.workhub.exception.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 /**
  * Validator to validate user request and convert into commadn
  *
@@ -17,15 +18,15 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class DepartmentCreateValidator implements
-    RequestValidator<DepartmentCreateRequest, DepartmentCreateCommand> {
+        RequestValidator<DepartmentCreateRequest, DepartmentCreateCommand> {
 
     private final DepartmentService departmentService;
 
     @Override
     public DepartmentCreateCommand validate(DepartmentCreateRequest request) {
         departmentService.getByCode(request.getCode()).ifPresent((department) -> {
-           throw new InvalidRequestException("Department with code "+ department.getCode()+" already exist.");
-         });
+            throw new InvalidRequestException("Department with code " + department.getCode() + " already exist.");
+        });
         return DepartmentCreateCommandMapper.toDepartmentCreateCommand(request);
     }
 }
