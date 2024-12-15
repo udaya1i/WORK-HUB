@@ -28,6 +28,7 @@
          <module>core</module>
          <module>department</module>
          <module>teams</module>
+         <module>user</module>
      </modules>
     <dependencyManagement>
         <dependencies>
@@ -44,6 +45,11 @@
             <dependency>
                 <groupId>com.workhub</groupId>
                 <artifactId>teams</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.workhub</groupId>
+                <artifactId>user</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>

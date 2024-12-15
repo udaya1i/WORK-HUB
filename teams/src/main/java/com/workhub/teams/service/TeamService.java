@@ -1,7 +1,6 @@
 package com.workhub.teams.service;
 
 import com.workhub.department.repository.StatusRepository;
-import com.workhub.entity.Department;
 import com.workhub.entity.Teams;
 import com.workhub.enums.StatusConstant;
 import com.workhub.specification.status.StatusSpecification;
