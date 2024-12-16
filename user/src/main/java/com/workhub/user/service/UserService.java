@@ -21,11 +21,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final StatusRepository statusRepository;
 
-    public List<Teams> getAll() {
+    public List<User> getAll() {
         return userRepository.findAll(StatusSpecification.notDeletable());
     }
 
-    public Optional<Teams> getById(Integer id) {
+    public Optional<User> getById(Integer id) {
         return userRepository.findOne(StatusSpecification.statusByIdSpec(id));
     }
 
@@ -43,7 +43,7 @@ public class UserService {
 
     }
 
-    public void edit(UserEditCommand command) {
+    public User edit(UserEditCommand command) {
         User user = command.getUser();
         user.setFirstName(command.getFirstName());
         user.setMiddleName(command.getMiddleName());
@@ -51,7 +51,7 @@ public class UserService {
         user.setEmail(command.getEmail());
         user.setPhone(command.getPhone());
         user.setStatus(statusRepository.findByName(StatusConstant.EDITED.getStatus()));
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     public void delete(User user) {

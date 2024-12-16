@@ -1,7 +1,6 @@
 package com.workhub.user.dto.command;
 
 import com.workhub.dto.command.Command;
-import com.workhub.entity.Status;
 import lombok.Data;
 
 @Data

@@ -18,6 +18,11 @@ public interface ApiConstant {
      */
     String TEAM = "team";
 
+    /**
+     * Api Constant for Users.
+     */
+    String USER = "user";
+
 
     /**
      * Common Api Constant

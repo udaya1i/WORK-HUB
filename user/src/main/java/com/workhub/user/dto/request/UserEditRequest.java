@@ -1,9 +1,12 @@
 package com.workhub.user.dto.request;
 
+import com.workhub.dto.request.Request;
 import lombok.Data;
 
 @Data
-public class UserEditRequest {
+public class UserEditRequest implements Request {
+
+    private Integer id;
 
     private String firstName;
 
