@@ -29,6 +29,7 @@
          <module>department</module>
          <module>teams</module>
          <module>user</module>
+         <module>auth</module>
      </modules>
     <dependencyManagement>
         <dependencies>
@@ -50,6 +51,11 @@
             <dependency>
                 <groupId>com.workhub</groupId>
                 <artifactId>user</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.workhub</groupId>
+                <artifactId>auth</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>

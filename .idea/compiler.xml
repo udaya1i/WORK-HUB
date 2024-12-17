@@ -11,11 +11,13 @@
         <module name="department" />
         <module name="teams" />
         <module name="user" />
+        <module name="auth" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="auth" options="-parameters" />
       <module name="core" options="-parameters" />
       <module name="department" options="-parameters" />
       <module name="teams" options="-parameters" />
