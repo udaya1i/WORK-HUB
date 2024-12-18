@@ -1,7 +1,6 @@
 package com.workhub.user.service;
 
 import com.workhub.department.repository.StatusRepository;
-import com.workhub.entity.Teams;
 import com.workhub.entity.User;
 import com.workhub.enums.StatusConstant;
 import com.workhub.specification.status.StatusSpecification;
@@ -60,7 +59,7 @@ public class UserService {
     }
 
     public Optional<User> getByName(String name) {
-        return userRepository.findByName(name);
+        return userRepository.findByUsername(name);
     }
 
 
